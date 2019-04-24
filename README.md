@@ -8,7 +8,6 @@ Created at [Michigan State University](https://www.msu.edu) by [Anil K. Jain](ht
 ## Demo video
 [![](http://img.youtube.com/vi/IRoIF6PzhmY/0.jpg)](http://www.youtube.com/watch?v=IRoIF6PzhmY "MSU Latent AFIS")
 
-
 ## <img src="https://image.flaticon.com/icons/svg/149/149366.svg" width="20"/> News
 | Date     | Update |
 |----------|--------|
@@ -92,7 +91,7 @@ The flags available for the matcher are:
 
 
 ## Citations:
-If you use find our code/models are useful, please cite those following papers:
+Please cite following papers:
 
 1. K. Cao, D. Nguyen, C. Tymoszek, A. K. Jain, ["End-to-end Latent Fingerprint Search"](https://arxiv.org/abs/1812.10213), MSU Technical Report MSU-CSE-18-3, 2018.
 ```
