@@ -8,6 +8,7 @@ Created at [Michigan State University](https://www.msu.edu) by [Anil K. Jain](ht
 ## Demo video
 <p align="center">
 [![](http://img.youtube.com/vi/IRoIF6PzhmY/0.jpg)](http://www.youtube.com/watch?v=IRoIF6PzhmY "MSU Latent AFIS")
+</p>
 
 ## Requirements
 Feature extraction code:
