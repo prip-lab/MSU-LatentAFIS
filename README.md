@@ -8,6 +8,12 @@ Created at [Michigan State University](https://www.msu.edu) by [Anil K. Jain](ht
 ## Demo video
 [![](http://img.youtube.com/vi/IRoIF6PzhmY/0.jpg)](http://www.youtube.com/watch?v=IRoIF6PzhmY "MSU Latent AFIS")
 
+
+## <img src="https://image.flaticon.com/icons/svg/149/149366.svg" width="20"/> News
+| Date     | Update |
+|----------|--------|
+| 2019-04-24 | Template extraction and Matching code |
+
 ## Requirements
 Feature extraction code:
 Please refer to [environment.yml](environment.yml) file
@@ -140,8 +146,3 @@ year      = {2018},
   publisher={IEEE}
 }
 ```
-
-
-
-
-
