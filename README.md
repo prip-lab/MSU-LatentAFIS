@@ -1,14 +1,16 @@
 # MSU Latent Automatic Fingerprint Identification System (AFIS) <img src="uploads/latent_afis.jpeg" width="50"/>
 A system for identifying latent fingerprints. 
 
-Created at [Michigan State University](https://www.msu.edu) by [Anil K. Jain](), [Kai Cao](https://scholar.google.com/citations?user=aA2HStQAAAAJ&hl=en), [Luan Nguyen](https://luannd.github.io/), and [Cori Tymoszek](https://github.com/ctymoszek).
+Created at [Michigan State University](https://www.msu.edu) by [Anil K. Jain](https://www.cse.msu.edu/~jain/), [Kai Cao](https://scholar.google.com/citations?user=aA2HStQAAAAJ&hl=en), [Dinh-Luan Nguyen](https://luannd.github.io/), and [Cori Tymoszek](https://github.com/ctymoszek).
 
 ![System Overview](uploads/systemoverview.png)
 
+## Demo video
+[![](http://img.youtube.com/vi/IRoIF6PzhmY/0.jpg)](http://www.youtube.com/watch?v=IRoIF6PzhmY "MSU Latent AFIS")
 
 ## Requirements
 Feature extraction code:
-Please refer to [environment.yml](https://github.com/luannd/MSU-LatentAFIS/blob/master/environment.yml) file
+Please refer to [environment.yml](environment.yml) file
 
 Matching code:
 Please install the required C++ dependencies:
@@ -22,7 +24,7 @@ Please download the models from [Google Drive](https://drive.google.com/drive/fo
 ## Getting Started
 Place the `models` folder in the root of the repository (same level as `extraction` and `matching` folders).
 
-Further detailed instructions for installation and use can be found in the User Guide PDF.
+Further detailed instructions for installation and use can be found in the [User Guide PDF](MSU_Latent_AFIS_User_Guide.pdf).
 Short instructions:
 Use this command to create the environment and install the packages:
 ```
