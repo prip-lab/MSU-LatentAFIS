@@ -1,7 +1,10 @@
-# MSU Latent Automatic Fingerprint Identification System (AFIS) <img src="https://raw.githubusercontent.com/ctymoszek/msu-latent-afis/master/uploads/latent_afis.jpeg" width="50"/>
+# MSU Latent Automatic Fingerprint Identification System (AFIS) <img src="uploads/latent_afis.jpeg" width="50"/>
 A system for identifying latent fingerprints. 
 
-Created at [Michigan State University](https://www.msu.edu) by Anil K. Jain, [Kai Cao](https://scholar.google.com/citations?user=aA2HStQAAAAJ&hl=en), [Luan Nguyen](https://luannd.github.io/), and [Cori Tymoszek](https://github.com/ctymoszek).
+Created at [Michigan State University](https://www.msu.edu) by [Anil K. Jain](), [Kai Cao](https://scholar.google.com/citations?user=aA2HStQAAAAJ&hl=en), [Luan Nguyen](https://luannd.github.io/), and [Cori Tymoszek](https://github.com/ctymoszek).
+
+![System Overview](uploads/systemoverview.png)
+
 
 ## Requirements
 Feature extraction code:
@@ -68,6 +71,7 @@ where ```/somepath/``` is replaced by the location of the LatentAFIS folder. Aft
 ./match -flag /path/to/something
 ```
 The flags available for the matcher are:
+
 • ```-l```: This flag is analogous to the ```--i``` flag in the feature extraction scripts. It specifies the path to a single .dat file for the latent query template.
 
 • ```-ldir```: This flag is analogous to the ```--idir``` flag in the feature extraction scripts. It specifies the path to a directory of latent .dat files for batch matching. The matcher will generate one score file for each latent in the directory.
@@ -133,7 +137,6 @@ year      = {2018},
   year={2019},
   publisher={IEEE}
 }
-
 ```
 
 
