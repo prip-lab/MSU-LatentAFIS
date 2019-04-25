@@ -173,8 +173,7 @@ def Bin2Template_Byte(fname, isLatent=True):
             tmp = struct.unpack('H' * des_len * minu_num, file.read(2 * des_len * minu_num))
             single_des = np.array(list(tmp))
             single_des = np.reshape(single_des, (minu_num, des_len))
-            # different from the matlab code. Each row of single_des is a descriptor for a minutia
-            # single_des = single_des.transpose()
+            # Each row of single_des is a descriptor for a minutia
             single_des = np.float32(single_des)
             for k in range(minu_num):
                 single_des[k] = single_des[k] * 1.0 / (LA.norm(single_des[k]) + 0.000001)
@@ -392,8 +391,7 @@ def Bin2Template_Byte_TF(fname, isLatent=True):
             tmp = struct.unpack('H' * des_len * minu_num, string.read(2 * des_len * minu_num))
             single_des = np.array(list(tmp))
             single_des = np.reshape(single_des, (minu_num, des_len))
-            # different from the matlab code. Each row of single_des is a descriptor for a minutia
-            # single_des = single_des.transpose()
+            # Each row of single_des is a descriptor for a minutia
             single_des = np.float32(single_des)
             for k in range(minu_num):
                 single_des[k] = single_des[k] * 1.0 / (LA.norm(single_des[k]) + 0.000001)
@@ -1009,8 +1007,8 @@ def Bin2Template_Byte_TF_C_judge(fname, isLatent=True):
 
 def compare_templates():
     import glob
-    template_path_1 = '/media/kaicao/data2/AutomatedLatentRecognition/Results/template/evaluation_06082018_C++/MSP_0.1_nomask_stride_16/'
-    template_path_2 = '/home/kaicao/PRIP/AutomatedLatentRecognition/evaluation_06082018_C++/MSP_0.15_nomask/'
+    template_path_1 = '/AutomatedLatentRecognition/Results/template/evaluation_06082018_C++/MSP_0.1_nomask_stride_16/'
+    template_path_2 = '/AutomatedLatentRecognition/evaluation_06082018_C++/MSP_0.15_nomask/'
     template_file_list_1 = glob.glob(template_path_1 + '*.dat')
     template_file_list_2 = glob.glob(template_path_2 + '*.dat')
     template_file_list_1.sort(key=lambda filename: int(''.join(filter(str.isdigit, filename))))
@@ -1041,7 +1039,7 @@ def compare_templates():
     template_2 = Bin2Template_Byte_TF_C(template_file_2, isLatent=False)
     print(len(template_1.minu_template[0].minutiae))
     print(len(template_2.minu_template[0].minutiae))
-    img_path = '/media/kaicao/data2/Data/MSP_background/images/'
+    img_path = '/Data/MSP_background/images/'
     from skimage import io
     img = io.imread(img_path + str(max_minu_ind + 1) + '.bmp', s_grey=True)
 
