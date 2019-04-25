@@ -214,8 +214,6 @@ class ImageFromFile_AutoEcoder(RNGDataFlow):
 class AEC_Model(ModelDesc):
 
     def _get_inputs(self):
-        # return [InputDesc(tf.float32, (None, opt.SHAPE, opt.SHAPE, 3), 'input')]
-                # InputDesc(tf.int32, (None, opt.SHAPE, opt.SHAPE, 3), 'label')]
         return [InputDesc(tf.float32, (None, None, None, 1), 'input'),
                 InputDesc(tf.float32, (None, None, None, 12), 'label')]
 
@@ -316,7 +314,6 @@ class Cao_Model(ModelDesc):
         nf = 32
         with argscope(Conv2D, kernel_shape=3, stride=1), \
                 argscope(LeakyReLU, alpha=0.2):
-            # nl=lambda x, name: LeakyReLU(BatchNorm('bn', x), name=name)):
             # encoder
             e1 = Conv2D('conv1', imgs, nf, nl=LeakyReLU)
             e2 = Conv2D('conv2', e1, nf * 2)
@@ -506,7 +503,7 @@ def get_data(datadir):
 
 
 def minutiae_extraction3(model_path, sample_path, imgs, output_name='reconstruction/gen:0', block=True):
-    imgs = glob.glob('/research/prip-kaicao/Data/Rolled/NIST4/Image/' + '*.bmp')
+    imgs = glob.glob('/Data/Rolled/NIST4/Image/' + '*.bmp')
 
     imgs.sort()
 
@@ -565,9 +562,9 @@ def minutiae_extraction3(model_path, sample_path, imgs, output_name='reconstruct
 
 
 def minutiae_extraction_latent(model_path, sample_path, imgs, output_name='reconstruction/gen:0', block=True):
-    imgs = glob.glob('/research/prip-kaicao/Data/Latent/DB/NIST27/image/' + '*.bmp')
+    imgs = glob.glob('/Data/Latent/DB/NIST27/image/' + '*.bmp')
 
-    minu_files = glob.glob('/research/prip-kaicao/Data/Latent/DB/ManualInformation/NIST27/ManMinu/*.txt')
+    minu_files = glob.glob('/Data/Latent/DB/ManualInformation/NIST27/ManMinu/*.txt')
     minu_files.sort()
     imgs.sort()
 
@@ -637,7 +634,7 @@ def minutiae_extraction_latent(model_path, sample_path, imgs, output_name='recon
 
 
 def minutiae_whole_image(model_path, sample_path, imgs, output_name='reconstruction/gen:0'):
-    imgs = glob.glob('/future/Data/Rolled/NISTSD14/Image2/*.bmp')
+    imgs = glob.glob('/Data/Rolled/NISTSD14/Image2/*.bmp')
     imgs.sort()
 
     with tf.Graph().as_default():
@@ -707,9 +704,9 @@ def get_model_filenames(model_dir):
     return meta_file, ckpt_file
 
 
-def compare_AEM_with_MMM(model_path, img_path='/home/kaicao/Dropbox/Research/Data/Latent/NISTSD27/image/',
-                         output_path='/media/kaicao/data2/AutomatedLatentRecognition/Results/minutiae/NISTSD27_latents_Contrast/',
-                         minu_path='/home/kaicao/Dropbox/Research/Data/Latent/NISTSD27/ManMinu', processing=None, thr=0.01):
+def compare_AEM_with_MMM(model_path, img_path='/Data/Latent/NISTSD27/image/',
+                         output_path='/AutomatedLatentRecognition/Results/minutiae/NISTSD27_latents_Contrast/',
+                         minu_path='/Data/Latent/NISTSD27/ManMinu', processing=None, thr=0.01):
     minu_model = ImportGraph(model_path)
 
     img_files = glob.glob(img_path + '*.bmp')
@@ -748,18 +745,18 @@ def get_args():
     parser.add_argument('--gpu', help='comma separated list of GPU(s) to use.', default='0')
     parser.add_argument('--model', help='model for minutiae extraction.', type=str, default='AEC_Model')
     parser.add_argument('--load', help='load model',
-                        default='/home/kaicao/Dropbox/Share/models/minutiae_AEC_128_fcn_aug2/model-157000.index')
+                        default='/models/minutiae_AEC_128_fcn_aug2/model-157000.index')
     parser.add_argument('--inference', action='store_true', help='extract minutiae on input images')
     parser.add_argument('--image_dir', help='a jpeg directory',
-                        default='/home/kaicao/Dropbox/Research/AutomatedLatentRecognition/Data/minutiae_cylinder_uint8')
+                        default='/AutomatedLatentRecognition/Data/minutiae_cylinder_uint8')
     parser.add_argument('--sample_dir', help='a jpeg directory',
-                        default='/research/prip-kaicao/AutomatedLatentRecognition/pred_minutiae_cylinder_aug_texture/')
-    parser.add_argument('--data', help='a jpeg directory', default='/media/kaicao/data2/AutomatedLatentRecognition/Data/minutiae_cylinder_uint8_MSPLatents_texture/')  # ''/media/kaicao/data2/AutomatedLatentRecognition/Data/minutiae_cylinder_uint8/') #'''/scratch/LatentAFIS/Data/minutiae_cylinder_uint8') #'/home/kaicao/Dropbox/Research/AutomatedLatentRecognition/Data/minutiae_cylinder_uint8'
+                        default='/AutomatedLatentRecognition/pred_minutiae_cylinder_aug_texture/')
+    parser.add_argument('--data', help='a jpeg directory', default='/AutomatedLatentRecognition/Data/minutiae_cylinder_uint8_MSPLatents_texture/')
     parser.add_argument('--load-size', help='size to load the original images', type=int)
     parser.add_argument('--batch_size', help='batch size', type=int, default=128)
     parser.add_argument('--crop-size', help='crop the original images', type=int)
     parser.add_argument('--log_dir', help='directory to save checkout point', type=str,
-                        default='/media/kaicao/data2/AutomatedLatentRecognition/models/Minutiae/UNet/minutiae_AEC_128_fcn_latent_STFT/')
+                        default='/AutomatedLatentRecognition/models/Minutiae/UNet/minutiae_AEC_128_fcn_latent_STFT/')
     args = parser.parse_args()
     opt.use_argument(args)
     if args.gpu:
@@ -815,30 +812,30 @@ if __name__ == '__main__':
     if args.inference and args.load:
         processing = 'STFT'
         if processing is None:
-            args.load = '/media/kaicao/data2/AutomatedLatentRecognition/models/Minutiae/UNet/minutiae_AEC_128_fcn_latent/'
-            output_path = '/media/kaicao/data2/AutomatedLatentRecognition/Results/minu_comparison/NISTSD27_latents_0.002/'
+            args.load = '/AutomatedLatentRecognition/models/Minutiae/UNet/minutiae_AEC_128_fcn_latent/'
+            output_path = '/AutomatedLatentRecognition/Results/minu_comparison/NISTSD27_latents_0.002/'
             thr = 0.002
         elif processing == 'contrast':
-            args.load = '/media/kaicao/data2/AutomatedLatentRecognition/models/Minutiae/UNet/minutiae_AEC_128_fcn_latent_processed/'
-            output_path = '/media/kaicao/data2/AutomatedLatentRecognition/Results/minu_comparison/NISTSD27_latents_Contrast/'
+            args.load = '/AutomatedLatentRecognition/models/Minutiae/UNet/minutiae_AEC_128_fcn_latent_processed/'
+            output_path = '/AutomatedLatentRecognition/Results/minu_comparison/NISTSD27_latents_Contrast/'
             thr = 0.01
         elif processing == 'STFT':
-            args.load = '/media/kaicao/data2/AutomatedLatentRecognition/models/Minutiae/UNet/minutiae_AEC_128_fcn_latent_STFT/'
+            args.load = '/AutomatedLatentRecognition/models/Minutiae/UNet/minutiae_AEC_128_fcn_latent_STFT/'
             thr = 0.05
-            output_path = '/media/kaicao/data2/AutomatedLatentRecognition/Results/minu_comparison/NISTSD27_latents_STFT/'
+            output_path = '/AutomatedLatentRecognition/Results/minu_comparison/NISTSD27_latents_STFT/'
         elif processing == 'texture':
-            args.load = '/media/kaicao/data2/AutomatedLatentRecognition/models/Minutiae/UNet/minutiae_AEC_128_fcn_latent_texture/'
+            args.load = '/AutomatedLatentRecognition/models/Minutiae/UNet/minutiae_AEC_128_fcn_latent_texture/'
             thr = 0.01
-            output_path = '/media/kaicao/data2/AutomatedLatentRecognition/Results/minu_comparison/NISTSD27_latents_texture/'
+            output_path = '/AutomatedLatentRecognition/Results/minu_comparison/NISTSD27_latents_texture/'
         elif processing == 'texture_STFT':
-            args.load = '/media/kaicao/data2/AutomatedLatentRecognition/models/Minutiae/UNet/minutiae_AEC_128_fcn_latent_STFT/'
+            args.load = '/AutomatedLatentRecognition/models/Minutiae/UNet/minutiae_AEC_128_fcn_latent_STFT/'
             thr = 0.05
-            output_path = '/media/kaicao/data2/AutomatedLatentRecognition/Results/minu_comparison/NISTSD27_latents_texture_STFT/'
+            output_path = '/AutomatedLatentRecognition/Results/minu_comparison/NISTSD27_latents_texture_STFT/'
         if not os.path.exists(output_path):
             os.makedirs(output_path)
-        img_path = '/home/kaicao/Dropbox/Research/Data/Latent/NISTSD27/image/'
+        img_path = '/Data/Latent/NISTSD27/image/'
         compare_AEM_with_MMM(args.load, img_path=img_path, output_path=output_path,
-                             minu_path='/home/kaicao/Dropbox/Research/Data/Latent/NISTSD27/ManMinu/',
+                             minu_path='/Data/Latent/NISTSD27/ManMinu/',
                              processing=processing, thr=thr)
 
     else:
