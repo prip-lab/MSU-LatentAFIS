@@ -83,41 +83,5 @@ int main(int argc, char** argv)
         matcher.List2List_matching(latent_dirname, gallery_path, score_path);
     }
 
-    // cout<<"argc = " <<argc<<endl;
-    // if(argc==3){
-    //     string latent_template_file(argv[1]);
-    //     string score_file(argv[2]);
-    //     string rolled_dat_list_file = "/home/cori/research/LatentAFISV2/Matching_20181204/data/templates/premade/NISTSD27_rolled/filelist_laptop_10K.txt";
-
-    //     string code_file = "codebook_EmbeddingSize_96_stride_16_subdim_6.dat";
-    //     PQ::Matcher matcher(code_file);
-    //     matcher.One2List_matching(latent_template_file, rolled_dat_list_file, score_file);
-    // }
-    // else if(argc<5)
-    // {
-    //     // for prip server
-    //     // NIST SD27
-    //      string score_list_file = "score_C_fast_NISTSD27_laptop_10K.txt";
-    //      string latent_dat_list_file = "/home/cori/research/LatentAFISV2/Matching_20181204/data/templates/premade/NISTSD27_Kai_1_des_96_version_1/filelist_laptop.txt";
-    //      string rolled_dat_list_file = "/home/cori/research/LatentAFISV2/Matching_20181204/data/templates/premade/NISTSD27_rolled/filelist_laptop_10K.txt";
-       
-    //     string code_file = "codebook_EmbeddingSize_96_stride_16_subdim_6.dat";
-    //     PQ::Matcher matcher(code_file);
-    //     matcher.List2List_matching(latent_dat_list_file, rolled_dat_list_file, score_list_file);
-    // }
-    // else
-    // {
-    //     string latent_dat_list_file(argv[1]);
-    //     string rolled_dat_list_file(argv[2]);
-    //     string score_list_file(argv[3]);
-    //     string code_file(argv[4]);
-        
-    //     cout<<latent_dat_list_file<<endl;
-    //     cout<<rolled_dat_list_file<<endl;
-    //     cout<<score_list_file<<endl;
-    //     cout<<code_file<<endl;
-    //     PQ::Matcher matcher(code_file);
-    //     matcher.List2List_matching(latent_dat_list_file, rolled_dat_list_file, score_list_file);
-    // }
     return 0;
 }
