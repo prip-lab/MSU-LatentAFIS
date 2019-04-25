@@ -55,7 +55,6 @@ def show_image(img, mask=None, block=True, fname=None):
 
     fig, ax = plt.subplots()
     ax.imshow(img, interpolation='nearest', cmap=plt.cm.gray)
-    # ax.axis('ROI')
     ax.set_xticks([])
     ax.set_yticks([])
     plt.show(block=block)
@@ -185,8 +184,8 @@ def show_orientation_field(img, dir_map, mask=None, fname=None, block=True):
 
 
 if __name__ == '__main__':
-    img_path = '../../../Data/Latent/NISTSD27/image/'
-    mask_path = '../../../Data/Latent/NISTSD27/maskNIST27/'
+    img_path = '/Data/Latent/NISTSD27/image/'
+    mask_path = '/Data/Latent/NISTSD27/maskNIST27/'
     img_files = glob.glob(img_path + '*.bmp')
 
     img_files.sort()
