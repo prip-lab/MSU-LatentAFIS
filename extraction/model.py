@@ -37,7 +37,6 @@ class Model:
         for i,key in enumerate(keys):
             model[key] = getattr(models, self.model_type)(**self.model_options[i])
         criterion = getattr(losses, self.loss_type)(**self.loss_options)
-        # evaluation = getattr(evaluate, self.evaluation_type)(**self.evaluation_options)
 
         if self.cuda:
             for i,key in enumerate(keys):
@@ -46,7 +45,6 @@ class Model:
 
         if checkpoints.latest('resume') is None:
             pass
-            # model.apply(weights_init)
         else:
             model = checkpoints.load(model, checkpoints.latest('resume'))
 
