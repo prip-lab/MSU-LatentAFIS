@@ -93,8 +93,6 @@ def code_step(X, D, n_nonzero_coefs=6):
 
 
 def denoising_using_dictonary(img, dict):
-    # img: input latent image
-    # dict: ridge structure dictionary constructed by function construct_dictionary()
     nrof_elements, nrof_pixels = dict.shape
     patch_size = int(np.sqrt(nrof_pixels))
     block_size = 16
@@ -298,7 +296,7 @@ if __name__ == '__main__':
     # construct ridge structure dictionary for quality estimation or ridge spacing estimation
     dict = get_maps.construct_dictionary()
 
-    imgfiles = glob.glob('/home/kaicao/Dropbox/Research/Data/Latent/NISTSD27/image/*.bmp')
+    imgfiles = glob.glob('/Data/Latent/NISTSD27/image/*.bmp')
     imgfiles.sort()
     for imgfile in imgfiles:
         img = cv2.imread(imgfile, cv2.IMREAD_GRAYSCALE)
