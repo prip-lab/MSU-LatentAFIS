@@ -277,10 +277,9 @@ def parse_arguments(argv):
 
     parser.add_argument('--fprint_type', type=str, help='Type of fingerprint templates (latent or rolled)',
                         default='latent')
-    parser.add_argument('--output_dir', type=str, help='data path for minutiae descriptor and minutiae extraction',
-                        default='/research/prip-kaicao/')
-    parser.add_argument('--input_dir', type=str, help='data path for images', default='/user/pripshare/')
-    parser.add_argument('--input_file', type=str, help='data path for images', default='/user/pripshare/')
+    parser.add_argument('--output_dir', type=str, help='data path for minutiae descriptor and minutiae extraction')
+    parser.add_argument('--input_dir', type=str, help='data path for images')
+    parser.add_argument('--input_file', type=str, help='data path for images')
     return parser.parse_args(argv)
 
 
