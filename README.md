@@ -2,6 +2,7 @@
 A system for identifying latent fingerprints. 
 
 Created at [Michigan State University](https://www.msu.edu) by [Anil K. Jain](https://www.cse.msu.edu/~jain/), [Kai Cao](https://scholar.google.com/citations?user=aA2HStQAAAAJ&hl=en), [Dinh-Luan Nguyen](https://luannd.github.io/), and [Cori Tymoszek](https://github.com/ctymoszek).
+This work is sponsored by [IARPA](https://www.iarpa.gov/).
 
 ![System Overview](uploads/systemoverview.png)
 
