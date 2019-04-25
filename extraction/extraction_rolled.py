@@ -2,8 +2,6 @@ from skimage.color import rgb2gray
 from skimage import io
 import numpy as np
 import glob
-# from skimage.morphology import skeletonize
-# import math
 import sys
 import timeit
 import argparse
@@ -11,9 +9,6 @@ import scipy
 import cv2
 import get_maps
 import preprocessing
-# import filtering
-# import binarization
-# import crossnumber
 import descriptor
 import os
 import template
@@ -93,7 +88,6 @@ class FeatureExtraction_Rolled:
         contrast_img = preprocessing.local_constrast_enhancement(img)
         texture_img = preprocessing.FastCartoonTexture(img, sigma=2.5, show=False)
         mnt = self.minu_model.run_whole_image(texture_img, minu_thr=0.15)
-        # mnt = self.remove_spurious_minutiae(mnt, mask)
         stop = timeit.default_timer()
         print('time for minutiae : %f' % (stop - start))
 
@@ -131,21 +125,17 @@ class FeatureExtraction_Rolled:
                 ofX = int(x_i / 16)
 
                 ori = -dir_map[ofY][ofX]
-                # print("ori = " + str(ori))
-                virtual_minutiae.append([x_i, y_i, ori])  # , distFromBg[y_i,x_i]
+                virtual_minutiae.append([x_i, y_i, ori])
         virtual_minutiae = np.asarray(virtual_minutiae)
 
         if len(virtual_minutiae) > 1000:
             virtual_minutiae = virtual_minutiae[:1000]
         print len(virtual_minutiae)
-        # fname = output_dir + os.path.splitext(name)[0] + '_rolled.jpeg'
-        # show.show_minutiae(img, virtual_minutiae, mask=mask, block=True, fname=None)
         if len(virtual_minutiae) > 3:
             virtual_des = descriptor.minutiae_descriptor_extraction(contrast_img, virtual_minutiae, self.patch_types,
                                                                     self.des_models,
                                                                     self.patchIndexV,
                                                                     batch_size=128)
-            # show.show_minutiae(img,virtual_minutiae)
             texture_template = template.TextureTemplate(h=h, w=w, minutiae=virtual_minutiae, des=virtual_des,
                                                         mask=mask)
             rolled_template.add_texture_template(texture_template)
@@ -257,8 +247,6 @@ class FeatureExtraction_Rolled:
             img_files.sort()
             for i, img_file in enumerate(img_files):
                 print i, img_file
-                # if i<61:
-                #     continue
                 img_name = os.path.basename(img_file)
                 fname = template_dir + os.path.splitext(img_name)[0] + '.dat'
                 if os.path.exists(fname):
@@ -293,9 +281,8 @@ def parse_arguments(argv):
     parser.add_argument('--gpu', help='comma separated list of GPU(s) to use.', default='0')
     parser.add_argument('--N1', type=int, help='rolled index from which the enrollment starts', default=0)
     parser.add_argument('--N2', type=int, help='rolled index from which the enrollment starts', default=2000)
-    parser.add_argument('--tdir', type=str, help='data path for minutiae descriptor and minutiae extraction',
-                        default='/research/prip-kaicao/')
-    parser.add_argument('--idir', type=str, help='data path for images', default='/user/pripshare/')
+    parser.add_argument('--tdir', type=str, help='data path for minutiae descriptor and minutiae extraction')
+    parser.add_argument('--idir', type=str, help='data path for images')
     return parser.parse_args(argv)
 
 
