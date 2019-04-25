@@ -179,8 +179,7 @@ def Bin2Template_Byte(fname, isLatent=True):
             tmp = struct.unpack('H' * des_len * minu_num, file.read(2 * des_len * minu_num))
             single_des = np.array(list(tmp))
             single_des = np.reshape(single_des, (minu_num, des_len))
-            # different from the matlab code. Each row of single_des is a descriptor for a minutia
-            # single_des = single_des.transpose()
+            # Each row of single_des is a descriptor for a minutia
             single_des = np.float32(single_des)
             for k in range(minu_num):
                 single_des[k] = single_des[k] * 1.0 / (LA.norm(single_des[k]) + 0.000001)
@@ -398,8 +397,7 @@ def Bin2Template_Byte_TF(fname, isLatent=True):
             tmp = struct.unpack('H' * des_len * minu_num, string.read(2 * des_len * minu_num))
             single_des = np.array(list(tmp))
             single_des = np.reshape(single_des, (minu_num, des_len))
-            # different from the matlab code. Each row of single_des is a descriptor for a minutia
-            # single_des = single_des.transpose()
+            # Each row of single_des is a descriptor for a minutia
             single_des = np.float32(single_des)
             for k in range(minu_num):
                 single_des[k] = single_des[k] * 1.0 / (LA.norm(single_des[k]) + 0.000001)
@@ -820,5 +818,5 @@ def Bin2Template_Byte_TF_C(fname, isLatent=True):
 
 
 if __name__ == '__main__':
-    template_file = '/home/kaicao/PRIP/AutomatedLatentRecognition/evaluation_06082018_C++/MI2547657W_02_A806111999L_05.dat'
+    template_file = '/AutomatedLatentRecognition/evaluation_06082018_C++/MI2547657W_02_A806111999L_05.dat'
     template = Bin2Template_Byte_TF_C(template_file, isLatent=False)
