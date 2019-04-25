@@ -605,7 +605,7 @@ def get_args():
     parser.add_argument('--sample_dir', help='directory for generated examples', type=str,
                         default='/AutomatedLatentRecognition/Enhancement_test')
 
-    parser.add_argument('--data', help='a jpeg directory',default='/AutomatedLatentRecognition/Data/enhancement_training/') #'/home/kaicao/Research/AutomatedLatentRecognition/Patches'
+    parser.add_argument('--data', help='a jpeg directory',default='/AutomatedLatentRecognition/Data/enhancement_training/')
     parser.add_argument('--load-size', help='size to load the original images', type=int)
     parser.add_argument('--batch_size', help='batch size', type=int)
     parser.add_argument('--crop-size', help='crop the original images', type=int)
