@@ -654,7 +654,7 @@ def STFT_main(img, patch_size=64, block_size=16):
 
 
 def test_dir_map_STFT():
-    img_path = '../../../../Data/Latent/NISTSD27/image/'
+    img_path = '/Data/Latent/NISTSD27/image/'
     imgfiles = glob.glob(img_path + '*.bmp')
     imgfiles.sort()
     get_maps_STFT(img, patch_size=64, block_size=16, preprocess=True)
