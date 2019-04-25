@@ -6,7 +6,7 @@ Created at [Michigan State University](https://www.msu.edu) by [Anil K. Jain](ht
 ![System Overview](uploads/systemoverview.png)
 
 ## Demo video
-[![](http://img.youtube.com/vi/IRoIF6PzhmY/0.jpg)](http://www.youtube.com/watch?v=IRoIF6PzhmY "MSU Latent AFIS")
+[![](http://img.youtube.com/vi/7OAf_qRWESw/0.jpg)](http://www.youtube.com/watch?v=7OAf_qRWESw "MSU Latent AFIS")
 
 ## <img src="https://image.flaticon.com/icons/svg/149/149366.svg" width="20"/> News
 | Date     | Update |
