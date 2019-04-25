@@ -18,7 +18,6 @@ def setup_graceful_exit():
 
 
 def cleanup():
-    # signal.signal(signal.SIGINT, signal.SIG_DFL)
     current_process = psutil.Process()
     children = current_process.children(recursive=True)
     for child in children:
@@ -26,14 +25,10 @@ def cleanup():
             os.kill(int(child.pid), signal.SIGKILL)
         except OSError as ex:
             raise Exception("wasn't able to kill the child process (pid:{}).".format(child.pid))
-        # os.waitpid(child.pid, os.P_ALL)
-    # print('\x1b[?25h', end='', flush=True)  # show cursor
     sys.exit(0)
 
 
 def ctrl_c_handler(*kargs):
-    # try to gracefully terminate the program
-    # signal.signal(signal.SIGINT, signal.SIG_DFL)
     cleanup()
 
 
@@ -88,23 +83,6 @@ def eformat(f, prec, exp_digits):
     mantissa, exp = s.split('e')
     # add 1 to digits as 1 is taken by sign +/-
     return "%se%+0*d" % (mantissa, exp_digits + 1, int(exp))
-
-
-# def saveargs(args: object) -> object:
-#    path = args.logs_dir
-#    varargs = '[Arguments]\n\n'
-#    # TODO: organize the parameters into groups
-#    for par in vars(args):
-#        if getattr(args, par) is None or par in ['save_dir', 'logs_dir',
-#                                                 'save_results', 'result_path',
-#                                                 'config_file']:
-#            continue
-#        elif par in ('model_options', 'loss_options', 'evaluation_options',
-#                     'dataset_options'):
-#            varargs += '%s = %s\n' % (par, json.dumps(getattr(args, par)))
-#        else:
-#            varargs += '%s = %s\n' % (par, getattr(args, par))
-#    writetextfile(varargs, 'args.txt', path)
 
 
 def file_exists(filename):
