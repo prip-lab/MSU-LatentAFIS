@@ -63,7 +63,6 @@ class SingleTemplate
         };
         SingleTemplate(const int nrof_minutiae, const int des_length):m_nrof_minu(nrof_minutiae),m_des_length(des_length)
         {     
-//            release();
             m_des = new float[m_nrof_minu*m_des_length]();
             m_minutiae = new MinuPoint[m_nrof_minu]();
             m_block_size = 16;
@@ -73,7 +72,6 @@ class SingleTemplate
 
         void initialization(const int nrof_minutiae, const int des_length)
         {
-            // release();
             m_nrof_minu = nrof_minutiae;
             m_des_length = des_length;
             m_des = new float[m_nrof_minu*m_des_length]();
@@ -83,7 +81,6 @@ class SingleTemplate
         
         SingleTemplate(const SingleTemplate &temp)
         {          
-            //release();
             m_nrof_minu = temp.m_nrof_minu;
             m_des_length = temp.m_des_length;
             //copy minutiae descriptor
@@ -107,7 +104,6 @@ class SingleTemplate
         };
         SingleTemplate& operator=(const SingleTemplate &temp)
         {
-            //release();
             m_nrof_minu = temp.m_nrof_minu;
             m_des_length = temp.m_des_length;
             //copy minutiae descriptor
@@ -219,7 +215,6 @@ class MinutiaeTemplate:public SingleTemplate{
         MinutiaeTemplate(const int nrof_minutiae, const short *x,const short *y,const float *ori,const int des_length, const float *des, const int blkH, const int blkW, const float *oimg):
         SingleTemplate(nrof_minutiae, des_length)
         {           
-            //release();
             m_template_type = TemplateType::Minutiae;
             
             SingleTemplate::m_blkH = blkH;
@@ -232,7 +227,6 @@ class MinutiaeTemplate:public SingleTemplate{
             set_x(x);
             set_y(y);
             set_ori(ori);
-            //memcpy (m_minutiae, minutiae, sizeof(MinuPoint)*m_nrof_minu);
             
             m_oimg = NULL;
             
@@ -257,9 +251,6 @@ class MinutiaeTemplate:public SingleTemplate{
         };
 };
 
-//base texture template, formerly called MinuTemplate
-//was the base class for Latent_MinuTemplate in PQ texture matcher
-//this base class was never invoked, only the derived class
 class TextureTemplate: public SingleTemplate
 {
     public:
@@ -291,7 +282,6 @@ class TextureTemplate: public SingleTemplate
         };
         void initialization(const int nrof_minutiae, const int des_length)
         {
-            // release();
             m_nrof_minu = nrof_minutiae;
             m_des_length = des_length;
             m_des = new float[m_nrof_minu*m_des_length]();
@@ -305,8 +295,6 @@ class TextureTemplate: public SingleTemplate
         };
 };
 
-//latent texture template, formerly Latent_MinuTemplate
-//comes from PQ matcher, inherited MinuTemplate
 class LatentTextureTemplate: public TextureTemplate
 {
     public:
@@ -328,7 +316,6 @@ class LatentTextureTemplate: public TextureTemplate
         };
         void initialization(const int nrof_minutiae, const int des_length, const int nrof_subs,  const int nrof_clusters)
         {
-            // release();
             m_nrof_minu = nrof_minutiae;
             m_des_length = des_length;
             m_des = new float[m_nrof_minu*m_des_length]();
@@ -339,7 +326,6 @@ class LatentTextureTemplate: public TextureTemplate
         
          void compute_dist_to_codewords( float *codewords, const int nrof_subs, const int sub_dim,  const int nrof_clusters)
         {
-            // release();
             m_dist_codewords = new float[m_nrof_minu*nrof_subs*nrof_clusters](); 
             
             float *pdes0, *pdes1, *pdes2; 
@@ -363,11 +349,8 @@ class LatentTextureTemplate: public TextureTemplate
                         {
                             dist += (*pdes2-*pword2)* (*pdes2-*pword2);
                         }
-//                        if(dist<min_v)
-//                            min_v = dist;
                         m_dist_codewords[i*nrof_subs*nrof_clusters+j*nrof_clusters+q] = (dist);
                     }
-//                    cout<<min_v<<" ";
                     
                 }
             }
@@ -380,8 +363,6 @@ class LatentTextureTemplate: public TextureTemplate
         };
 };
 
-//rolled texture template with PQ, formerly called MinuPQTemplate
-//included in both matchers, was only used in PQ texture matcher
 class RolledTextureTemplatePQ:public TextureTemplate
 {
     public:
@@ -503,8 +484,6 @@ class RolledTextureTemplatePQ:public TextureTemplate
 
 };
 
-//fingerprint template which may have multiple minutiae templates and texture templates
-//comes from original matcher
 class FPTemplate
 {
     public:
@@ -548,7 +527,6 @@ public:
     }
     void add_texture_template(const LatentTextureTemplate &texture_template)
     {
-        // release();
         m_texture_templates.push_back(texture_template);
         m_nrof_texture_templates++;
     };
@@ -567,16 +545,12 @@ public:
         FPTemplate::release();
         m_texture_templates.clear();
     }
-    //this function won't be necessary once we combine the .dat files
-    //this is for deleting the pre-PQ texture template after it is loaded in
     void release_texture_templates(){
         m_texture_templates.clear();
         m_nrof_texture_templates = 0;
     }
     void add_texture_template(const RolledTextureTemplatePQ & texture_template)
     {
-        // release();
-        // m_texture_templates.push_back(texture_template);
         RolledTextureTemplatePQ texture_template_new(texture_template);
         m_texture_templates.push_back(texture_template_new);
         m_nrof_texture_templates++;
