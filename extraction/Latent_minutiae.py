@@ -327,10 +327,9 @@ def parse_arguments(argv):
     parser.add_argument('--N2', type=int,
                         help='rolled index from which the enrollment starts', default=2000)
     parser.add_argument('--data_path', type=str,
-                        help='data path for minutiae descriptor and minutiae extraction', default='/research/prip-kaicao/')
+                        help='data path for minutiae descriptor and minutiae extraction')
     parser.add_argument('--image_path', type=str,
-                        help='data path for images',
-                        default='/user/pripshare/')
+                        help='data path for images')
     return parser.parse_args(argv)
 if __name__ == '__main__':
     args = parse_arguments(sys.argv[1:])
