@@ -89,7 +89,6 @@ class FeatureExtraction_Latent:
             manu_minu = np.loadtxt(minu_file)
             # #     # remove low quality minutiae points
             input_minu = np.array(manu_minu)
-            # input_minu[:, 2] = -input_minu[:, 2]
             input_minu[:, 2] = input_minu[:, 2] / 180.0 * np.pi
         else:
             input_minu = []
@@ -307,7 +306,6 @@ class FeatureExtraction_Latent:
                                                                                           minu_file=minu_files[i],
                                                                                           show_minutiae=False)
             else:
-                # show_minutiae was true here
                 latent_template, texture_template = self.feature_extraction_single_latent(img_file,
                                                                                           output_dir=template_dir,
                                                                                           show_processes=False,
