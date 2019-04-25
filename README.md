@@ -25,7 +25,7 @@ Please install the required C++ dependencies:
 - [Eigen](http://eigen.tuxfamily.org/index.php?title=Main_Page)
 
 ## Models
-Please download the models from [Google Drive](https://drive.google.com/drive/folders/1G5NCrTPP5iSOfaPTG5J3pBH7fiTRA_Xd?usp=sharing). 
+Please download the models from [Google Drive](https://drive.google.com/drive/folders/1G5NCrTPP5iSOfaPTG5J3pBH7fiTRA_Xd?usp=sharing). These models are pretrained on a forensic (not synthetic) dataset. However, the forensic datasets used in our experiments (including NIST SD27, MSP, etc.) are not available for public distribution.
 
 ## Getting Started
 Place the `models` folder in the root of the repository (same level as `extraction` and `matching` folders).
