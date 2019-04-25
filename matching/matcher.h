@@ -59,7 +59,6 @@ private:
 
 private:
     int N; // top N minutiae correspondences for matching
-    /// vector< high_resolution_clock::time_point> time;
     
     vector<float> time;
     vector<string> description;
@@ -73,7 +72,6 @@ private:
     float *codewords;
     float a;
     float similarity_time;
-//    float simi_matrix[]
 };
 }
 #endif /* MATCHER_H */
