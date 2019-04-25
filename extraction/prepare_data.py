@@ -472,8 +472,8 @@ def refine_minutiae(minutiae, dist_thr=10, ori_dist=np.pi / 4):
     return minutiae
 
 
-def process_kais_markup(pathname='/home/kaicao/Dropbox/Share/markup/data/selected_prints_templates_Kai/',
-                        data_path='/home/kaicao/Research/AutomatedLatentRecognition/Data/minutiae_cylinder/',
+def process_kais_markup(pathname='/markup/data/selected_prints_templates_Kai/',
+                        data_path='/AutomatedLatentRecognition/Data/minutiae_cylinder/',
                         num_channels=12):
     subjects = glob.glob(pathname + '*')
 
@@ -568,8 +568,8 @@ def process_kais_markup(pathname='/home/kaicao/Dropbox/Share/markup/data/selecte
                 np.save(outfile, matrix)
 
 
-def process_MSPLatents_markup(pathname='/home/kaicao/Dropbox/Share/markup/data/selected_prints_templates_Kai/',
-                              data_path='/home/kaicao/Research/AutomatedLatentRecognition/Data/minutiae_cylinder/',
+def process_MSPLatents_markup(pathname='/markup/data/selected_prints_templates_Kai/',
+                              data_path='/AutomatedLatentRecognition/Data/minutiae_cylinder/',
                               num_channels=12, processing='STFT'):
     files = glob.glob(pathname + '*.mat')
     files.sort()
@@ -621,7 +621,7 @@ def process_MSPLatents_markup(pathname='/home/kaicao/Dropbox/Share/markup/data/s
 
 
 def process_FVC_markup_from_minutiae(pathname,
-                                     data_path='/home/kaicao/Research/AutomatedLatentRecognition/Data/minutiae_cylinder/',
+                                     data_path='/AutomatedLatentRecognition/Data/minutiae_cylinder/',
                                      num_channels=12):
     mat_files = glob.glob(pathname + '*.mat')
     mat_files.sort()
@@ -655,7 +655,7 @@ def process_FVC_markup_from_minutiae(pathname,
 
 
 def process_HighSign_markup_from_minutiae(img_path, minu_path,
-                                          data_path='/home/kaicao/Research/AutomatedLatentRecognition/Data/minutiae_cylinder/',
+                                          data_path='/AutomatedLatentRecognition/Data/minutiae_cylinder/',
                                           num_channels=12, processing='STFT'):
     minu_files = glob.glob(minu_path + '*.txt')
     minu_files.sort()
@@ -708,10 +708,10 @@ def process_FVC_markup(pathname, data_path):
 
 if __name__ == '__main__':
     # process HighSign latents
-    img_path = '/media/kaicao/Data/AutomatedLatentRecognition/Hisign/UL2Bmp/UL2Bmp/'
-    minu_path = '/media/kaicao/Data/AutomatedLatentRecognition/Hisign/UL2Bmp_Manual_minu/'
+    img_path = '/AutomatedLatentRecognition/Hisign/UL2Bmp/UL2Bmp/'
+    minu_path = 'AutomatedLatentRecognition/Hisign/UL2Bmp_Manual_minu/'
     processing = 'STFT'
-    data_path = '/media/kaicao/data2/AutomatedLatentRecognition/Data/minutiae_cylinder_uint8_MSPLatents_' + processing + '/'
+    data_path = '/AutomatedLatentRecognition/Data/minutiae_cylinder_uint8_MSPLatents_' + processing + '/'
 
     process_HighSign_markup_from_minutiae(img_path, minu_path,
                                           data_path=data_path, num_channels=12, processing='STFT')
