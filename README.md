@@ -13,6 +13,7 @@ This work is sponsored by [IARPA](https://www.iarpa.gov/).
 | Date     | Update |
 |----------|--------|
 | 2019-04-24 | Template extraction and Matching code |
+| 2019-04-28 | Added sample latent images |
 
 ## Requirements
 Feature extraction code:
