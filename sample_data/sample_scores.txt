@@ -1,0 +1,5 @@
+good_latent.bmp: Retrieved true match at rank 1, similarity score=36.574
+
+bad_latent.bmp: Retrieved true match at rank 1, similarity score=70.333
+
+ugly_latent.bmp: Retrieved true match at rank 1, similarity score=35.661
