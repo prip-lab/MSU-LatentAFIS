@@ -30,7 +30,7 @@ Please download the models from [Google Drive](https://drive.google.com/drive/fo
 Training code will be provided in the future for those who wish to train custom models.
 
 ## Data
-The forensic datasets used in our experiments (including NIST SD27, MSP, etc.) are not available for public distribution. However, we have provided 3 latent fingerprint images from NIST SD27 in the /sample_data/ folder, along with their rolled mates. We have also provided the results obtained by the system when searching for these images agains a gallery of 10,000 reference prints.
+The forensic datasets used in our experiments (including NIST SD27, MSP, etc.) are not available for public distribution. However, we have provided 3 latent fingerprint images from NIST SD27 in the /sample_data/ folder, along with their rolled mates. We have also provided the rank and similarity score computed by the system for these samples.
 
 The latent fingerprint images in NIST SD27 are divided into three categories, "good", "bad", and "ugly", based on the quality of the fingerprint. The sample images contain one pair from each category.
 
