@@ -25,7 +25,14 @@ Please install the required C++ dependencies:
 - [Eigen](http://eigen.tuxfamily.org/index.php?title=Main_Page)
 
 ## Models
-Please download the models from [Google Drive](https://drive.google.com/drive/folders/1G5NCrTPP5iSOfaPTG5J3pBH7fiTRA_Xd?usp=sharing). These models are pretrained on a forensic (not synthetic) dataset. However, the forensic datasets used in our experiments (including NIST SD27, MSP, etc.) are not available for public distribution.
+Please download the models from [Google Drive](https://drive.google.com/drive/folders/1G5NCrTPP5iSOfaPTG5J3pBH7fiTRA_Xd?usp=sharing). These models are pretrained on a forensic (not synthetic) dataset. 
+
+Training code will be provided in the future for those who wish to train custom models.
+
+## Data
+The forensic datasets used in our experiments (including NIST SD27, MSP, etc.) are not available for public distribution. However, we have provided 3 latent fingerprint images from NIST SD27 in the /sample_data/ folder, along with their rolled mates. We have also provided the results obtained by the system when searching for these images agains a gallery of 10,000 reference prints.
+
+The latent fingerprint images in NIST SD27 are divided into three categories, "good", "bad", and "ugly", based on the quality of the fingerprint. The sample images contain one pair from each category.
 
 ## Getting Started
 Place the `models` folder in the root of the repository (same level as `extraction` and `matching` folders).
@@ -53,11 +60,6 @@ pip install tensorpack==0.8.9
 
 Change ``` afis.config ``` file for your custom path.
 
-### Template Training
-The files for training are located in ```latentafis/training/```, where there is one Python file for each of the three models. The usage for these scripts is as follows:
-```
-python scriptname.py /path/to/training/data/ /path/to/save/model/
-```
 ### Template Extraction
 There are two scripts to do this extraction - one for the latent images (```latentafis/extraction/extraction latent.py```), and one for the rolled reference images (```latentafis/extraction/extraction rolled.py```). The general format of the usage is the same for both:
 ```
@@ -70,11 +72,7 @@ Available flags for both ```extraction latent.py``` and ```extraction rolled.py`
 • ```--tdir=/path/to/template/folder/```: This flag points to a directory where all the generated templates should be saved. Note that the software is configured to overwrite existing templates at this location in the case of name conflicts.
 
 ### Matching
-The C++ code to perform matching/identification is located in ```latentafis/matching/```. First, the code must be compiled with the make command. Second, we need to configure the location of the included libraries:
-```
-sudo ldconfig /somepath/LatentAFIS/matching/boost/stage/lib
-```
-where ```/somepath/``` is replaced by the location of the LatentAFIS folder. After that, the usage is as follows:
+The C++ code to perform matching/identification is located in ```latentafis/matching/```. First, the code must be compiled with the make command. Please ensure that the dependencies listed above are instaled. After that, the usage is as follows:
 ```
 ./match -flag /path/to/something
 ```
@@ -90,6 +88,8 @@ The flags available for the matcher are:
 
 • ```-c```: This flag specifies the path to a codebook file needed by the matcher. The codebook is provided, and should be located in the same folder as the matcher. The file name should be something like ```codebook EmbeddingSize 96 stride 16 subdim 6.dat```.
 
+## Future
+- Training scripts to create custom models
 
 ## Citations:
 Please cite following papers:
