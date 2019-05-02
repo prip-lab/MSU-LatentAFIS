@@ -148,6 +148,7 @@ class SphereFace(nn.Module):
         x = self.layer3(x)
         x = self.layer4(x)
 
+        # x = F.avg_pool2d(x, kernel_size=x.size()[2:])
         x = x.view(x.size(0), -1)
         x = F.dropout(x, self.dropout_prob)
         x = self.fc(x)
