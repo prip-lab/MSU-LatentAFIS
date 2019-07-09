@@ -95,7 +95,7 @@ The flags available for the matcher are:
 ## Citations:
 Please cite following papers:
 
-1. K. Cao, D. Nguyen, C. Tymoszek, A. K. Jain, ["End-to-end Latent Fingerprint Search"](https://arxiv.org/abs/1812.10213), MSU Technical Report MSU-CSE-18-3, 2018.
+1. K. Cao, D. Nguyen, C. Tymoszek, A. K. Jain, ["End-to-end Latent Fingerprint Search"](https://arxiv.org/abs/1812.10213), to appear in the IEEE transactions on Information Forensics and Security, 2019.
 ```
 @article{cao2018end,
   title={End-to-End Latent Fingerprint Search},
