@@ -7,7 +7,8 @@ This work is sponsored by [IARPA](https://www.iarpa.gov/).
 ![System Overview](uploads/systemoverview.png)
 
 ## Demo video
-[![](http://img.youtube.com/vi/7OAf_qRWESw/0.jpg)](http://www.youtube.com/watch?v=7OAf_qRWESw "MSU Latent AFIS")
+[![](http://img.youtube.com/vi/YBFG9n8-07E/0.jpg)](https://www.youtube.com/watch?v=YBFG9n8-07E "MSU Latent AFIS")
+
 
 ## <img src="https://image.flaticon.com/icons/svg/149/149366.svg" width="20"/> News
 | Date     | Update |
