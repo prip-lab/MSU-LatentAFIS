@@ -29,8 +29,6 @@ Please install the required C++ dependencies:
 ## Models
 Please download the models from [Google Drive](https://drive.google.com/drive/folders/1G5NCrTPP5iSOfaPTG5J3pBH7fiTRA_Xd?usp=sharing). These models are pretrained on a forensic (not synthetic) dataset. 
 
-Training code will be provided in the future for those who wish to train custom models.
-
 ## Data
 The forensic datasets used in our experiments (including NIST SD27, MSP, etc.) are not available for public distribution. However, we have provided 3 latent fingerprint images from NIST SD27 in the /sample_data/ folder, along with their rolled mates. We have also provided the rank and similarity score computed by the system for these samples.
 
@@ -90,8 +88,8 @@ The flags available for the matcher are:
 
 • ```-c```: This flag specifies the path to a codebook file needed by the matcher. The codebook is provided, and should be located in the same folder as the matcher. The file name should be something like ```codebook EmbeddingSize 96 stride 16 subdim 6.dat```.
 
-## Future
-- Training scripts to create custom models
+## Warranty
+- This software is provided as-is with no warranty or support. It is intended as a companion for our publications listed below, and as a reference point for other research groups pursuing similar work.
 
 ## Citations:
 Please cite following papers:
