@@ -1,14 +1,16 @@
 # MSU Latent Automatic Fingerprint Identification System (AFIS) <img src="uploads/latent_afis.jpeg" width="50"/>
-A system for identifying latent fingerprints. 
+A system for identifying latent fingerprints. **Note: This software is no longer being updated or maintained.**
 
 Created at [Michigan State University](https://www.msu.edu) by [Anil K. Jain](https://www.cse.msu.edu/~jain/), [Kai Cao](https://scholar.google.com/citations?user=aA2HStQAAAAJ&hl=en), [Dinh-Luan Nguyen](https://luannd.github.io/), and [Cori Tymoszek](https://github.com/ctymoszek).
 This work is sponsored by [IARPA](https://www.iarpa.gov/).
 
 ![System Overview](uploads/systemoverview.png)
 
+# Warranty:
+## This research software is provided as-is with no warranty, support, or maintenance. It is intended as a companion for our publications listed below, and as a reference point for other research groups pursuing similar work. The code authors are unable to provide assistance with troubleshooting.
+
 ## Demo video
 [![](http://img.youtube.com/vi/YBFG9n8-07E/0.jpg)](https://www.youtube.com/watch?v=YBFG9n8-07E "MSU Latent AFIS")
-
 
 ## <img src="https://image.flaticon.com/icons/svg/149/149366.svg" width="20"/> News
 | Date     | Update |
@@ -27,7 +29,7 @@ Please install the required C++ dependencies:
 - [Eigen](http://eigen.tuxfamily.org/index.php?title=Main_Page)
 
 ## Models
-Please download the models from [Google Drive](https://drive.google.com/drive/folders/1G5NCrTPP5iSOfaPTG5J3pBH7fiTRA_Xd?usp=sharing). These models are pretrained on a forensic (not synthetic) dataset. 
+Please download the models from [Google Drive](https://drive.google.com/drive/folders/12wgcb5K_T5yNTsLYb557JLdhf2IHvo_j?usp=sharing). These models are pretrained on a forensic (not synthetic) dataset. 
 
 ## Data
 The forensic datasets used in our experiments (including NIST SD27, MSP, etc.) are not available for public distribution. However, we have provided 3 latent fingerprint images from NIST SD27 in the /sample_data/ folder, along with their rolled mates. We have also provided the rank and similarity score computed by the system for these samples.
@@ -87,9 +89,6 @@ The flags available for the matcher are:
 • ```-s```: This flag specifies the path to the directory where score files should be saved. Note that these will overwrite any existing score files at this location.
 
 • ```-c```: This flag specifies the path to a codebook file needed by the matcher. The codebook is provided, and should be located in the same folder as the matcher. The file name should be something like ```codebook EmbeddingSize 96 stride 16 subdim 6.dat```.
-
-## Warranty
-- This software is provided as-is with no warranty or support. It is intended as a companion for our publications listed below, and as a reference point for other research groups pursuing similar work.
 
 ## Citations:
 Please cite following papers:
